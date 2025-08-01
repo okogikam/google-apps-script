@@ -8,6 +8,12 @@ class gAppScript{
         this.fileName = "";
         this.sheetOpenNow = "";
     }
+    async getData(){
+        let response = await fetch(`${this.apiUrl}?id=${this.id}`);
+        let json = await response.json();
+        
+        return json;
+    }
     loadConteiner(){
         let div = document.createElement('div');
         div.classList.add('card');
