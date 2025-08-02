@@ -8,9 +8,9 @@ class gAppScript{
         this.fileName = "";
         this.sheetOpenNow = "";
     }
-    async getData(){
-        let response = await fetch(`${this.apiUrl}?id=${this.id}`);
-        let json = await response.json();
+    async getData({sheetName}){
+        let response = await fetch(`${this.apiUrl}?id=${this.id}&type=2&name=${sheetName}`);
+        let json = await response.json();  
         
         return json;
     }
@@ -96,7 +96,7 @@ class gAppScript{
         let table = await this.defaultDisplay(json);
         this.element.querySelector(".status").innerHTML = ``;
 
-        // console.log(json)
+        console.log(json)
         new DataTable(table,{
             destroy: true,
             responsive: true
